@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <script>
+        let height = prompt("Angiv højde i cm");
+        let weight = prompt("Angiv vægt kg");
+        let bmi = weight / ((height / 100) * (height / 100));
+        let resultat;
+
+        if (bmi < 19) {
+            resultat = "Undervægtig";
+        } else if (bmi >= 20 && bmi < 25) {
+            resultat = "Normal";
+        } else if (bmi >= 25 && bmi < 30) {
+            resultat = "Overvægtig";
+        } else if (bmi >= 30 && bmi < 35) {
+            resultat = "Fed";
+        } else if (bmi >= 35 && bmi < 40) {
+            resultat = "Svær fedmne";
+        } else if (bmi >= 40) {
+            resultat = "Ekstremt fed";
+        }
+
+
+        if (weight == 0) {
+            alert(`Husk vægt skal være et tal støre end 0. \n Prøv igen`);
+        }
+        if (height == 0) {
+            alert(`Husk højde skal være et tal støre end 0. \n Prøv igen`);
+        } else if (isNaN(bmi)) {
+            alert(`Fejl \n Skriv kun tal`);
+        } else {
+            let fedmeklasse = confirm(`Din BMI er ${bmi}, kunne du tænke dig, at kende din vægtklasse`);
+        }
+
+
+        let fedmeklasse = confirm(`Din BMI er ${bmi}, kunne du tænke dig, at kende din vægtklasse?`);
+
+        if (fedmeklasse == true) {
+            alert(`Din vægtklasse er ${resultat}`);
+        } else {
+            alert(`Tak for nu :) `);
+        }
+
+        console.log(bmi);
+
+    </script>
+</body>
+
+</html>
