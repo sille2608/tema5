@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>klikpaaknap.html - øvelse i timen</title>
+    <link rel="stylesheet" href="">
+
+    <style>
+        #box,
+        #bax {
+            width: 200px;
+            height: 200px;
+            background-color: wheat;
+            padding: 20px;
+            margin: 10px;
+        }
+
+        button {
+            font-size: 2rem;
+            margin: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <button id="klik">
+        KLIK
+    </button>
+    <button id="slet">
+        SLET
+    </button>
+    <button id="html">
+        HTML
+    </button>
+    <button id="flyt">
+        FLYT
+    </button>
+
+    <div id="box"></div>
+    <div id="bax"></div>
+
+    <script>
+        let box = document.querySelector("#box");
+        let bax = document.querySelector("#bax");
+
+        // Box viser tekst "KLIK" = variabel + eventlistener
+        let klik = document.querySelector("#klik");
+        klik.addEventListener("click", tekstKlik);
+
+        function tekstKlik() {
+            box.textContent = "KLIK";
+        }
+        // Box resettes og "KLIK" fjernes
+        let slet = document.querySelector("#slet");
+        slet.addEventListener("click", reset);
+
+        function reset() {
+            box.textContent = "";
+        }
+        // Tilføjelse af <h2> og <p> ved tryk på HTML-knap
+        let html = document.querySelector("#html");
+        html.addEventListener("click", tekstTilføj);
+
+        function tekstTilføj() {
+            box.innerHTML = "<h2>HEJSA</h2>\n <p>Pisse svær øvelse</p>";
+        }
+        // Flytning af <h2> og <p> ved tryk på flyt-knap til nederste kasse
+        let flyt = document.querySelector("#flyt");
+        flyt.addEventListener("click", flytte);
+
+        function flytte() {
+            box.innerHTML = "";
+            bax.innerHTML = "<h2>HEJSA</h2>\n <p>Pisse svær øvelse</p>";
+        }
+    </script>
+</body>
+
+</html>
