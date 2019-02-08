@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+
+    <style>
+        .minedyr {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="liste"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+
+        //her bruger vi et array en liste funktion god skik at skrive [] for at markere at det er en tom array 
+        let alleDyr = [] ;
+        //hent JSON fil i asynkron funtion - her laver man en ny funktion som er en asynkorn funktion 
+        async function start() {
+            //henter data filen 
+            const myJson = await fetch("dyr.json");
+            //den hentede data skal tolkes som json 
+            alleDyr = await myJson.json(); 
+            //kald funktionen der viser data i DOM 
+            visDyr(); 
+        }
+
+        function visDyr() {
+            let dest = document.querySelector("#liste");
+            alleDyr.forEach(dyr => {
+                dest.innerHTML +=
+                    `<div class=minedyr> 
+                        <h3>${dyr.navn}</h3> 
+                        <p>${dyr.type}</p>
+                        <img src=${dyr.billede}> 
+                        <p>${dyr.levested}</p> 
+                    </div>`;
+            })
+
+        }
+    </script>
+</body>
+
+</html>
