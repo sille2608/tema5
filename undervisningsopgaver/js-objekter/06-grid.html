@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+
+    <style>
+        #liste {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            grid-gap: 1vw;
+        }
+
+        .minedyr div {
+            border: 1px solid black;
+            margin: 5px;
+            padding: 3px;
+        }
+
+        .dyr {
+            border: 1px solid black;
+            margin: 5px;
+            padding: 5px;
+        }
+
+        @media only screen and (min-width: 768px) {
+            #liste {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Gem 02-visDyr.html i en ny kopi, 04-dyrIarray.html. Lav ændringer i scriptet:
+Erklær et array, med fem dyr: gris, frø, ræv, sild og krokodille
+Egenskaber: navn, type, levested og billede
+Billed-url’er:
+http://helf-kea.dk/test/frø.png
+http://helf-kea.dk/test/gris.png
+http://helf-kea.dk/test/fox.png
+http://helf-kea.dk/test/sild.jpg
+http://helf-kea.dk/test/kroko.jpg
+Lav et script, som viser arrayet i Console.
+Kig i Console, og fold arrayet ud.
+ -->
+
+
+    <div id="liste" class="minedyr"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+        let alleDyr = [{
+            "navn": "frø",
+            "type": "amfibie",
+            "billede": "http://helf-kea.dk/test/frog.png",
+            "levested": "vandhullet"
+        }, {
+            "navn": "gris",
+            "type": "pattegris",
+            "billede": "http://helf-kea.dk/test/gris.png",
+            "levested": "svinefarm"
+        }, {
+            "navn": "ræv",
+            "type": "pattedyr",
+            "billede": "http://helf-kea.dk/test/fox.png",
+            "levested": "skoven"
+        }, {
+            "navn": "sild",
+            "type": "fisk",
+            "billede": "http://helf-kea.dk/test/sild.jpg",
+            "levested": "havet"
+        }, {
+            "navn": "krokodille",
+            "type": "krybdyr",
+            "billede": "http://helf-kea.dk/test/kroko.jpg",
+            "levested": "floden"
+        }];
+
+        function start() {
+            let destination = document.querySelector("#liste");
+            alleDyr.forEach(dyr => {
+                destination.innerHTML +=
+                    `<div class="minedyr">
+                        <h3>${dyr.navn}</h3>
+                        <p>${dyr.type}</p>
+                        <img src=${dyr.billede}>
+                        <p>fra ${dyr.levested}</p>
+                    </div>`;
+            })
+        }
+
+    </script>
+</body>
+
+</html>
