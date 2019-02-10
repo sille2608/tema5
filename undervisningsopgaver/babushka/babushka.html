@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BABUSHKA</title>
+
+    <style>
+        body {
+            background-color: #eaeaea;
+        }
+        img {
+            width: 100%;
+        }
+        .minret {
+            padding: 1rem;
+            background-color: white;
+        }
+        h3 {
+            font-size: 2rem;
+        }
+
+        footer {
+            padding-top: 2rem;
+            text-align: center;
+            height: 3rem;
+            background-color: darkgrey;
+        }
+        #liste {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            margin: 1rem;
+            grid-gap: 2rem;
+        }
+        @media only screen and (min-width:600px) {
+            #liste {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media only screen and (min-width:768px) {
+            #liste {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Menu</h1>
+        <nav>
+            <button class="forretter">forretter</button>
+            <button class="hovedretter">hovedretter</button>
+            <button class="desserter">desserter</button>
+            <button class="drikkevarer">drikkevarer</button>
+        </nav>
+    </header>
+
+
+
+    <div id="liste"></div>
+
+
+
+    <footer>Adresse: Grønnegade 97 1234 Køkbenhavn K · Åbningstider: Mandag-fredag 10:30-22:00 Lørdag 12:00-23:00</footer>
+
+
+    <script>
+        let retter = [];
+        document.addEventListener("DOMContentLoaded", start);
+        async function start() {
+            const myJson = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1jxxxFoWBuMJ1qhQ9BQIAyKHmP38XtAF9_sQr0xo5JLo");
+            retter = await myJson.json();
+            console.log(retter);
+            visRetter();
+        }
+        function visRetter() {
+            let destination = document.querySelector("#liste");
+            retter.forEach(ret => {
+                destination.innerHTML += `
+                <div class="minret"><h2>${ret.navn}</h2>
+                <img src=imgs/small/${ret.billede}-sm.jpg alt=${ret.navn}>
+                <p>${ret.kort}</p>
+                <p>Pris: ${ret.pris},-</p>
+      `;
+            })
+        }
+    </script>
+
+</body>
+
+</html>
