@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+
+    <style>
+        #liste {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            grid-gap: 1vw;
+            border: none;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .valgt {
+            background-color: cornflowerblue;
+        }
+
+        .menu {
+            text-align: center;
+        }
+
+        button {
+            height: 2rem;
+        }
+
+        .personer {
+            border: 1px solid black;
+            margin: 5px;
+            padding: 3px;
+        }
+
+        @media only screen and (min-width: 700px) {
+            #liste {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media only screen and (min-width: 900px) {
+            #liste {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        img {
+            max-width: 15rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Alle</h1>
+        <nav class="menu">
+            <!--      vælger at det er ALLE der skal startes med at se med classen valgt  -->
+            <button class="filter valgt" data-hold="alle">Alle</button>
+            <button class="filter" data-hold="a">Hold A</button>
+            <button class="filter" data-hold="b">Hold B</button>
+        </nav>
+    </header>
+
+
+    <main>
+        <section id="liste" class="personer"></section>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+
+        //her bruger vi et array en liste funktion god skik at skrive [] for at markere at det er en tom array
+        let personer = [];
+        //vælger at det er alle der skal startes med at se
+        let filter = "alle";
+
+
+        //hent JSON fil i asynkron funtion - her laver man en ny funktion som er en asynkorn funktion
+        async function start() {
+            //henter data filen
+            const myJson = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1OLlD_GRoz71piHvnW306omRAyHS7vtLOILQt-K0YF_c");
+            //den hentede data skal tolkes som json
+            personer = await myJson.json();
+            //kald funktionen der viser data i DOM
+
+            //HER SORTERES DER EFTER NAVN / BOGSTAVER !!!! ********************************************
+            personer.sort((a, b) => {
+                return a.navn.localeCompare(b.navn);
+            });
+
+            //kald funktionen der viser data i DOM
+            visPersoner();
+
+        }
+
+        function visPersoner() {
+            let dest = document.querySelector("#liste");
+
+            //man tømmer destinationen for at nulstille. Så bliver der tilføjet det rigtige filter længere nede.
+            dest.innerHTML = "";
+            personer.forEach(person => {
+                //eftrsom der ikke har nogele der har skrevet at de er på hold "alle" så bliver man nød til at have 2 muligheder så hvis filter enten = alle eller filter = person.hold dvs hold a eller b. Tegnet || betyder ELLER.
+                if (filter == "alle" || filter == person.hold) {
+                    dest.innerHTML +=
+                        `<div class=personer>
+                        <h2>${person.navn}</h2>
+                        <img src= ${person.billede}> <br>
+                        <a href="https://github.com/${person.github}">https://github.com/${person.github}</a>
+                    </div>`;
+                }
+            });
+            //alle skal kunne klikkes på ved at vælge forEach, så hvis alle filter knapperne bliver trykket på så bliver det sendt videre til funktionen filtrering. I stedet for at skrive elm kan man også skrive but fordi det er en knap.
+            document.querySelectorAll(".filter").forEach(elm => {
+                elm.addEventListener("click", filtrering);
+            });
+
+            //this er den knap der er trykket på om den bliver kørt igennem data-hold hvilken data-hold der er tale om. Den generalle filter vairabel bliver her erstattet med DET specifikke filter til det gældende knap
+            function filtrering() {
+                //her skal vi først fjerne valgt fra alle så styling på den valgte knap bliver fjernet, og dernæst så tilføjer vi stylingen til DEN filtrering der er tale om altså this
+                document.querySelectorAll(".filter").forEach(elm => {
+                    elm.classList.remove("valgt");
+                });
+                this.classList.add("valgt");
+
+                //her får vi overskriften på siden siden til ændre sig alt efter den valgte/this filter knap
+                document.querySelector("h1").textContent = this.textContent;
+
+                filter = this.getAttribute("data-hold");
+                //det kræver at kalde på funktionen visPersoner for at få siden til at reagere og få den til at gå tilbage og bruge den variabel der er i visPersoner.
+                visPersoner();
+            }
+        }
+        start();
+    </script>
+</body>
+
+</html>
