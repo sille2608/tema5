@@ -7,8 +7,15 @@
     <title>BABUSHKA</title>
 
     <style>
+
+        body * {
+            box-sizing: border-box;
+        }
+
         body {
             background-color: #eaeaea;
+            margin: 0;
+            padding: 0;
         }
 
         img {
@@ -58,6 +65,33 @@
             grid-gap: 2rem;
         }
 
+         #popup {
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            background-color: hsla(0, 15%, 48%, 0.5);
+            display: none;
+            overflow: scroll;
+        }
+
+        #indhold {
+            min-height: 50vh;
+            background-color: white;
+            width: 70vw;
+            margin: 4rem auto;
+        }
+
+        #luk {
+            position: fixed;
+            right: 2rem;
+        }
+
+        #luk button {
+            font-size: 2rem;
+            padding: 1rem 2rem;
+        }
+
         @media only screen and (min-width:600px) {
             #liste {
                 grid-template-columns: repeat(2, 1fr);
@@ -79,6 +113,13 @@
 
 <body>
 
+    <div id="popup">
+        <div id="luk">
+            <button> X </button>
+        </div>
+        <div id="indhold"></div>
+    </div>
+
     <header>
         <h1>Menu</h1>
         <nav>
@@ -89,7 +130,6 @@
             <button class="filter" data-ret="drikkevarer">drikkevarer</button>
 
             <button class="pris" data-pris="pris">Sorter efter pris</button>
-
         </nav>
     </header>
 
