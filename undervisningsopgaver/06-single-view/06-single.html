@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+
+    <style>
+        body * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            max-width: 15rem;
+        }
+
+        .personer {
+            border: 1px solid black;
+            margin: 5px;
+            padding: 3px;
+        }
+
+        #liste {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            grid-gap: 1vw;
+            border: none;
+        }
+
+        #single {
+            background-color: hsla(0, 15%, 48%, 0.5);
+        }
+
+        #indhold {
+            min-height: 50vh;
+            background-color: white;
+            width: 70vw;
+            margin: 4rem auto;
+        }
+
+        #tilbage {}
+
+        #tilbage button {
+            font-size: 2rem;
+            padding: 1rem 2rem;
+        }
+
+        @media only screen and (min-width: 700px) {
+            #liste {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media only screen and (min-width: 900px) {
+            #liste {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main id="single">
+        <div id="tilbage">
+            <button>
+                << </button> </div> <section id="indhold">
+                    </section>
+
+    </main>
+
+
+    <script>
+        //HER GØR VI DET MULIGT AT INFORMATIONERNE FRA DEN ANDEN SIDE KAN BLIVE OVERFØRT/MODTAGET PÅ DENNE SIDE.
+        let urlParams = new URLSearchParams(window.location.search)
+        let github = urlParams.get("github");
+        console.log(github);
+
+        document.addEventListener("DOMContentLoaded", start);
+
+
+        let personer = [];
+
+        async function start() {
+            const myJson = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1OLlD_GRoz71piHvnW306omRAyHS7vtLOILQt-K0YF_c");
+            personer = await myJson.json();
+
+            personer.sort((a, b) => {
+                return a.navn.localeCompare(b.navn);
+            });
+
+            visPersoner();
+
+        }
+
+        function visPersoner() {
+            let dest = document.querySelector("#indhold");
+
+            dest.innerHTML = "";
+            personer.forEach(person => {
+
+                //når github svarer til det der er medsendt
+                if (github==person.github) {
+
+                    let template = `
+                         <article class="personer">
+                                <h2>${person.navn}</h2>
+                                <img class= "billede" src= ${person.billede} alt="${person.navn}">
+                                <p> Hold: ${person.hold}, Alder:${person.alder} <p>
+                                <h3>${person.navn}´s historie</h3>
+                                <p>${person.hold}<p>
+                            </article>`;
+
+                    dest.insertAdjacentHTML("beforeend", template);
+                }
+            });
+
+
+
+            document.querySelectorAll(".filter").forEach(elm => {
+                elm.addEventListener("click", filtrering);
+            });
+
+
+            start();
+
+            //dette indhold skal bruges
+            function visSingle(person) {
+                document.querySelector("#indhold").innerHTML = `
+                            <article class="personer">
+                                <h2>${person.navn}</h2>
+                                <img class= "billede" src= ${person.billede} alt="${person.navn}">
+                                <p> Hold: ${person.hold}, Alder:${person.alder} <p>
+                                <h3>${person.navn}´s historie</h3>
+                                <p>${person.hold}<p>
+                            </article>
+                        `;
+
+                document.querySelector("#popup").style.display = "block";
+            }
+
+            document.querySelector("#tilbage button"). addEventListener("click", () => {
+                location.href="05-kald.html";
+            })
+        }
+    </script>
+</body>
+
+</html>
