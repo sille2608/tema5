@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+
+    <style>
+
+
+
+        body * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            max-width: 12rem;
+        }
+
+        #liste {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            grid-gap: 1vw;
+            border: none;
+        }
+
+        .minret {
+            height: 30rem;
+            padding: 2rem;
+        }
+
+        main {
+            background-color: rgba(226, 176, 145, 0.64);
+            height: 45rem;
+        }
+
+        #indhold {
+            min-height: 50vh;
+            background-color: white;
+            width: 70vw;
+            margin: 3rem auto;
+        }
+
+        #tilbage {}
+
+        #tilbage button {
+            font-size: 2rem;
+            padding: 1rem 2rem;
+        }
+
+        @media only screen and (min-width: 650px) {
+            #liste {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            img {
+            max-width: 80rem;
+        }
+
+            .minret {
+            height: 40rem;
+            padding: 2rem;
+        }
+
+            main {
+            height: 65rem;
+        }
+
+        }
+
+        @media only screen and (min-width: 1140px) {
+            #liste {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            img {
+            height: 30rem;
+        }
+
+            .minret {
+            height: 45rem;
+            padding: 2rem;
+        }
+
+            main {
+            height: 63rem;
+        }
+
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <main id="single">
+        <div id="tilbage">
+            <button>
+                << </button> </div> <section id="indhold">
+                    </section>
+
+    </main>
+
+
+    <script>
+        //HER GØR VI DET MULIGT AT INFORMATIONERNE FRA DEN ANDEN SIDE KAN BLIVE OVERFØRT/MODTAGET PÅ DENNE SIDE.
+        let urlParams = new URLSearchParams(window.location.search)
+        let id = urlParams.get("id");
+        console.log(id);
+
+        document.addEventListener("DOMContentLoaded", start);
+
+
+        let retter = [];
+
+        async function start() {
+            const myJson = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1jxxxFoWBuMJ1qhQ9BQIAyKHmP38XtAF9_sQr0xo5JLo");
+            retter = await myJson.json();
+
+            retter.sort((a, b) => {
+                return a.navn.localeCompare(b.navn);
+            });
+
+            visRetter();
+
+        }
+
+        function visRetter() {
+            let dest = document.querySelector("#indhold");
+
+            dest.innerHTML = "";
+            retter.forEach(ret => {
+
+                //når id svarer til det der er medsendt
+                if (id == ret.id) {
+
+                    let template = `
+                        <article class="minret">
+                            <h2>${ret.navn}</h2>
+                            <img src=imgs/small/${ret.billede}-sm.jpg alt=${ret.navn}>
+                            <p>${ret.lang}</p>
+                            <p>Pris: ${ret.pris},-</p>
+                    </article>`;
+
+                    dest.insertAdjacentHTML("beforeend", template);
+                }
+            });
+
+
+
+            document.querySelectorAll(".filter").forEach(elm => {
+                elm.addEventListener("click", filtrering);
+            });
+
+
+            start();
+
+            //dette indhold skal bruges
+            function visSingle(ret) {
+                document.querySelector("#indhold").innerHTML = `
+                    <article class="minret">
+                            <h2>${ret.navn}</h2>
+                            <img src=imgs/small/${ret.billede}-sm.jpg alt=${ret.navn}>
+                            <p>${ret.lang}</p>
+                            <p>Oprindelse: ${ret.oprindelse}</p>
+                            <p>Pris: ${ret.pris},-</p>
+                    </article>`;
+
+                document.querySelector("#popup").style.display = "block";
+            }
+
+            document.querySelector("#tilbage button"). addEventListener("click", () => {
+                location.href="babushka-singleNytVindue.html";
+            })
+        }
+    </script>
+</body>
+
+</html>
