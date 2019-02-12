@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="">
 
     <style>
-
         body * {
             box-sizing: border-box;
         }
@@ -18,7 +17,7 @@
             padding: 0;
         }
 
-         img {
+        img {
             max-width: 15rem;
         }
 
@@ -45,7 +44,7 @@
             padding: 3px;
         }
 
-         #liste {
+        #liste {
             display: grid;
             grid-template-columns: repeat(1, 1fr);
             grid-gap: 1vw;
@@ -59,6 +58,7 @@
             position: fixed;
             background-color: hsla(0, 15%, 48%, 0.5);
             display: none;
+            overflow: scroll;
         }
 
         #indhold {
@@ -89,8 +89,6 @@
                 grid-template-columns: repeat(3, 1fr);
             }
         }
-
-
     </style>
 </head>
 
@@ -154,10 +152,10 @@
 
                     dest.insertAdjacentHTML("beforeend", template);
                     //vi bruger lastElementChild hvor man offivcielt siger at man tager fat på den "sidste del af listen". Det er fordi vi er i en Loop og der bliver der læst 1 ad gangen. Man bliver derfor nød til at tage fat på den sidste i loopen for at få den til at gå rundt. Man kan få dat på alle.
-                    dest.lastElementChild.addEventListener("click",visSingle);
-                    function visSingle () {
-                        document.querySelector("#popup").style.display="block";
-                    }
+                    dest.lastElementChild.addEventListener("click", () => {
+                        visSingle(person);
+                    });
+
                 }
             });
 
@@ -183,8 +181,23 @@
                 visPersoner();
             }
         }
+
         start();
 
+
+        function visSingle(person) {
+            document.querySelector("#indhold").innerHTML = `
+                            <article class="personer">
+                                <h2>${person.navn}</h2>
+                                <img class= "billede" src= ${person.billede} alt="${person.navn}">
+                                <p> Hold: ${person.hold}, Alder:${person.alder} <p>
+                                <h3>${person.navn}´s historie</h3>
+                                <p>${person.hold}<p>
+                            </article>
+                        `;
+
+            document.querySelector("#popup").style.display = "block";
+        }
     </script>
 </body>
 
