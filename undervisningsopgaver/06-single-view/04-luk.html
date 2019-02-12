@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+
+    <style>
+        body * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            max-width: 15rem;
+        }
+
+
+        h1 {
+            text-align: center;
+        }
+
+        .valgt {
+            background-color: cornflowerblue;
+        }
+
+        .menu {
+            text-align: center;
+        }
+
+        nav button {
+            height: 2rem;
+        }
+
+        .personer {
+            border: 1px solid black;
+            margin: 5px;
+            padding: 3px;
+        }
+
+        #liste {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            grid-gap: 1vw;
+            border: none;
+        }
+
+        #popup {
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            background-color: hsla(0, 15%, 48%, 0.5);
+            display: none;
+            overflow: scroll;
+        }
+
+        #indhold {
+            min-height: 50vh;
+            background-color: white;
+            width: 70vw;
+            margin: 4rem auto;
+        }
+
+        #luk {
+            position: fixed;
+            right: 2rem;
+        }
+
+        #luk button {
+            font-size: 2rem;
+            padding: 1rem 2rem;
+        }
+
+        @media only screen and (min-width: 700px) {
+            #liste {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media only screen and (min-width: 900px) {
+            #liste {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="popup">
+        <div id="luk">
+            <button> X </button>
+        </div>
+        <div id="indhold"></div>
+
+    </div>
+    <header>
+        <h1>Alle</h1>
+        <nav class="menu">
+            <button class="filter valgt" data-hold="alle">Alle</button>
+            <button class="filter" data-hold="a">Hold A</button>
+            <button class="filter" data-hold="b">Hold B</button>
+        </nav>
+    </header>
+
+
+    <main>
+        <section id="liste" class="personer"></section>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+
+
+        let personer = [];
+        let filter = "alle";
+
+
+        async function start() {
+            const myJson = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1OLlD_GRoz71piHvnW306omRAyHS7vtLOILQt-K0YF_c");
+            personer = await myJson.json();
+
+            personer.sort((a, b) => {
+                return a.navn.localeCompare(b.navn);
+            });
+
+            visPersoner();
+
+        }
+
+        function visPersoner() {
+            let dest = document.querySelector("#liste");
+
+            dest.innerHTML = "";
+            personer.forEach(person => {
+
+                if (filter == "alle" || filter == person.hold) {
+                    //Vi laver en template fordi
+                    let template = `
+                        <article class=personer>
+                            <h2>${person.navn}</h2>
+                            <img src= ${person.billede}> <br>
+                            <a href="https://github.com/${person.github}">https://github.com/${person.github}</a>
+                    </article>`;
+
+                    dest.insertAdjacentHTML("beforeend", template);
+                    //vi bruger lastElementChild hvor man offivcielt siger at man tager fat på den "sidste del af listen". Det er fordi vi er i en Loop og der bliver der læst 1 ad gangen. Man bliver derfor nød til at tage fat på den sidste i loopen for at få den til at gå rundt. Man kan få dat på alle.
+                    dest.lastElementChild.addEventListener("click", () => {
+                        visSingle(person);
+                    });
+
+                }
+            });
+
+
+
+            document.querySelectorAll(".filter").forEach(elm => {
+                elm.addEventListener("click", filtrering);
+            });
+
+
+            function filtrering() {
+
+                document.querySelectorAll(".filter").forEach(elm => {
+                    elm.classList.remove("valgt");
+                });
+                this.classList.add("valgt");
+
+                //her får vi overskriften på siden siden til ændre sig alt efter den valgte/this filter knap
+                document.querySelector("h1").textContent = this.textContent;
+
+                filter = this.getAttribute("data-hold");
+
+                visPersoner();
+            }
+        }
+
+        start();
+
+
+        function visSingle(person) {
+            document.querySelector("#indhold").innerHTML = `
+                            <article class="personer">
+                                <h2>${person.navn}</h2>
+                                <img class= "billede" src= ${person.billede} alt="${person.navn}">
+                                <p> Hold: ${person.hold}, Alder:${person.alder} <p>
+                                <h3>${person.navn}´s historie</h3>
+                                <p>${person.hold}<p>
+                            </article>
+                        `;
+
+            document.querySelector("#popup").style.display = "block";
+            document.querySelector("#popup #luk").addEventListener("click",close);
+        }
+
+        function close() {
+            document.querySelector("#popup").style.display = "none";
+        }
+    </script>
+</body>
+
+</html>
