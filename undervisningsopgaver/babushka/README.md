@@ -1,5 +1,3 @@
-Babushka
-
 Babushka pop up 
 http://www.silleagerskovdesign.com/kea/tema5/babushka/babushka-single.html 
 
