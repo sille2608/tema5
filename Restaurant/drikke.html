@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BELLANI´S DRIKKE</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-------fonte---------->
+    <!--p og underoverskrifter-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,900" rel="stylesheet">
+
+    <!--overskrifter-->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP:700" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+    <div id="popup">
+        <div id="luk">
+            <button> X </button>
+        </div>
+        <div id="indhold"></div>
+    </div>
+
+    <header>
+
+        <div class="logo">
+            <img src="img/logo-bellanis.svg" alt="logo">
+        </div>
+
+        <!---desktop menu---->
+        <div class="siteheader">
+            <nav>
+                <div class="dropdowndesktop">
+                    <a href="portfolio.html" class="portfolie"> MENU </a>
+
+                    <div class="dropdown-contentdesktop">
+                        <a href="portfolio.html#postmodernisme">- PIZZA</a>
+                        <a href="portfolio.html#video">- PASTA</a>
+                        <a href="portfolio.html#bibliotekaren">- FORRETTER</a>
+                        <a href="portfolio.html#prototype">- DRIKKE</a>
+                    </div>
+                </div>
+                <a href="om.html">KONTAKT</a>
+                <a href="kontakt.html">OM</a>
+            </nav>
+
+        </div>
+
+
+        <!---mobil menu burger---->
+
+      <div class="mobilenav">
+
+            <nav>
+                <div id="menuknap">☰</div>
+                <ul id="menu" class="hidden">
+                    <li><a href="portfolio.html"><h2>MENU</h2></a></li>
+                    <li class="filter" data-ret="pizza"> <a href="pizza.html">- Pizza</a></li>
+                    <li class="filter" data-ret="pasta"> <a href="pasta.html">- Pasta</a></li>
+                    <li class="filter" data-ret="forretter"> <a href="forretter.html">- Forretter</a></li>
+                    <li class="filter" data-ret="drikke"><a href="drikke.html">- Drikke</a></li>
+                    <li> <a href="index.html#kontakt"><h3>KONTAKT</h3></a></li>
+                    <li><a href="index.html#om"><h3>OM</h3></a></li>
+                </ul>
+
+            </nav>
+        </div>
+
+    </header>
+
+    <main>
+        <section id="header">
+            <img src="img/drikke_header.jpg" alt="pasta">
+            <div class="kategori_overskrift">
+                <h1>Drikke</h1>
+                <p>Kan vi byde på en forfriskning?</p>
+            </div>
+        </section>
+
+        <section id="liste"> </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
