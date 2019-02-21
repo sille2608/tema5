@@ -1,103 +1,345 @@
-     body * {
-            box-sizing: border-box;
-        }
+/**********generalt******/
 
-        body {
-            background-color: #eaeaea;
-            margin: 0;
-            padding: 0;
-        }
+body * {
+    box-sizing: border-box;
+}
 
-        img {
-            width: 100%;
-        }
+body {
+    background-color: #eaeaea;
+    margin: 0;
+    padding: 0;
+}
 
-        .minret {
-            padding: 1rem;
-            background-color: white;
-        }
+img {
+    width: 100%;
+}
 
-        h3 {
-            font-size: 2rem;
-        }
 
-        h1 {
-            text-transform: uppercase;
-        }
 
-        .valgt {
-            background-color: #e2b091;
-        }
+h1 {
+    text-transform: uppercase;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.9rem;
+    margin-top: 0rem;
+}
 
-        nav button {
-            height: 3rem;
-            width: 6.4rem;
-            border-radius: 20px;
-        }
+h2 {
+    font-size: 1.7rem;
+    margin-top: 1rem;
+    margin-bottom: 0rem;
+    font-family: 'Noto Serif JP', serif;
+}
 
-        nav {
-            text-align: center;
-        }
+h3 {
+    font-size: 1.2rem;
+    margin: 0
+}
 
-        footer {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            padding: 1.5rem;
-            text-align: center;
-            height: 5rem;
-            background-color: darkgrey;
-        }
+p {
+    font-family: 'Lato', sans-serif;
 
-        #liste {
-            display: grid;
-            grid-template-columns: repeat(1, 1fr);
-            margin: 1rem;
-            grid-gap: 2rem;
-        }
+}
 
-        #popup {
-            top: 0;
-            width: 100vw;
-            height: 100vh;
-            position: fixed;
-            background-color: hsla(0, 15%, 48%, 0.5);
-            display: none;
-            overflow: scroll;
-        }
 
-        #indhold {
-            min-height: 50vh;
-            background-color: white;
-            width: 70vw;
-            margin: 4rem auto;
-        }
 
-        #luk {
-            position: fixed;
-            right: 2rem;
-        }
+/********************MENU MOBIL********************/
 
-        #luk button {
-            font-size: 2rem;
-            padding: 1rem 2rem;
-            height: 4.3rem;
-            width: 6.4rem;
-            border-radius: 20px;
-        }
+.hidden {
+    transform: scale(0);
+}
 
-        @media only screen and (min-width:600px) {
-            #liste {
-                grid-template-columns: repeat(2, 1fr);
-            }
+#menuknap {
+    position: relative;
+    display: inline-block;
+    width: 3rem;
+    font-size: 3rem;
+    font-family: Montserrat;
+    color: #e2e2e2;
+    float: right;
+    margin-right: 1rem;
+}
 
-        }
+#menu {
+    list-style-type: none;
+    transition: transform 1s;
+    transform-origin: top right;
+    position: absolute;
+    background-color: #aaaaaa;
+    min-width: 170px;
+    z-index: 1;
+    right: 1rem;
+    top: 1.9rem;
+    text-align: right;
+    padding-right: 1rem;
+}
 
-        @media only screen and (min-width:900px) {
-            #liste {
-                grid-template-columns: repeat(3, 1fr);
-            }
+#menu a {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    text-decoration: none;
+    color: white;
+    line-height: 3rem;
+}
 
-            nav {
-                text-align: left;
-            }
-        }
+
+.siteheader {
+    display: none;
+}
+
+
+header img {
+    margin-left: 1rem;
+    display: block;
+}
+
+
+header {
+    width: 100%;
+    display: inline;
+    position: fixed;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+#logo {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+}
+
+#mobilenav {
+    grid-column: 3/ 4;
+    grid-row: 1 / 2;
+}
+
+/*****MENU BAR TABLET*****/
+
+@media only screen and (min-width:400px) {
+    header img {
+        max-width: 12rem;
+        margin-left: 2rem;
+    }
+}
+
+/******MENU BAR DESCTOP******/
+
+@media only screen and (min-width: 945px) {
+    .mobilenav {
+        display: none;
+    }
+
+    .dropdowndesktop {
+        float: left;
+        overflow: hidden;
+    }
+
+    .dropdowndesktop .portfolie {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 22px;
+        color: white;
+        padding-right: 1rem;
+        text-align: right;
+        border: none;
+        outline: none;
+        margin: 0;
+        content: "\u2261";
+        line-height: 1.2rem;
+        background-color: #c9c9c9;
+    }
+
+    header .portfolie {
+        margin: 0;
+        padding: 0;
+
+    }
+
+    .dropdown-contentdesktop {
+        display: none;
+        position: absolute;
+        background-color: darkgray;
+        min-width: 140px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+
+    .dropdown-contentdesktop a {
+        padding: 7px 10px;
+        font-weight: 400;
+        display: block;
+        text-align: left;
+        color: white;
+    }
+
+    .dropdown-contentdesktop a:hover {
+        background-color: lightgrey;
+    }
+
+    .dropdowndesktop:hover .dropdown-contentdesktop {
+        display: block;
+    }
+
+    header {
+        width: 100%;
+        display: inline;
+        position: fixed;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+    }
+
+    header .siteheader {
+        height: 60px;
+        width: 100%;
+        background-color: #c9c9c9;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        line-height: 1.2rem;
+    }
+
+    .siteheader a:hover {
+        color: black;
+    }
+
+    header .portfolie:hover {
+        color: black;
+    }
+
+    /*ingen streg under links*/
+    header nav a {
+        text-decoration: none;
+        padding-right: 1rem;
+    }
+
+    header a {
+        line-height: 1.2rem;
+        font-size: 22px;
+    }
+
+    header img {
+        max-width: 15rem;
+        margin-left: 3rem;
+    }
+
+    .siteheader nav {
+        margin-right: 2.5rem;
+    }
+
+}
+
+/********menu slut*************/
+
+
+
+/**********************Pop op boks start**********************/
+
+.valgt {
+    background-color: #e2b091;
+}
+
+#liste {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    margin: 1rem;
+    grid-gap: 2rem;
+}
+
+#popup {
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background-color: hsla(0, 15%, 48%, 0.5);
+    display: none;
+    overflow: scroll;
+}
+
+#indhold {
+    min-height: 50vh;
+    background-color: white;
+    width: 70vw;
+    margin: 4rem auto;
+}
+
+#luk {
+    position: fixed;
+    right: 2rem;
+}
+
+#luk button {
+    font-size: 2rem;
+    padding: 1rem 2rem;
+    height: 4.3rem;
+    width: 6.4rem;
+    border-radius: 20px;
+}
+
+.minret {
+    padding: 1rem;
+    background-color: white;
+}
+
+/**********************pop op boks slut**********************/
+
+/***********************FORSIDE START************************/
+
+
+
+
+
+#kontakt {
+    background-color: grey;
+}
+
+#kontakt article {
+    padding: 2rem;
+}
+
+#kontakt p {
+    color: white;
+    text-align: left;
+}
+
+#om {
+    background-color: white;
+}
+
+#om p {
+    font-size: 1.1rem;
+}
+
+#om article {
+    background-color: white;
+    padding: 2rem;
+    border: 1rem;
+    border-color: black;
+}
+
+/**********forside slut************/
+
+
+
+
+
+
+@media only screen and (min-width:600px) {
+    #liste {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media only screen and (min-width:900px) {
+    #liste {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    nav {
+        text-align: left;
+    }
+}
