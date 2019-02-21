@@ -154,9 +154,7 @@
         let retter = [];
         let filter = "alle";
 
-        //NOTER FRA FEEDBACK
 
-        //godt bare at have denne her json start. Ikke nødvendigt med en yder funktion der har navnet start og så json fil-funktionen inden i.
         async function start() {
             const myJson = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1jxxxFoWBuMJ1qhQ9BQIAyKHmP38XtAF9_sQr0xo5JLo");
             retter = await myJson.json();
@@ -169,13 +167,16 @@
 
         }
 
+
         function visRetter() {
             let dest = document.querySelector("#liste");
 
+            //Laver en tom destination
             dest.innerHTML = "";
             retter.forEach(ret => {
 
                 if (filter == "alle" || filter == ret.kategori) {
+                    //vi laver en template fordi vi gerne vil have at funktionen visSingle skal kunne fungere uden for funktionen visRetter. For at DEN funktion skal kunne hente dette data laver man det til en template
                     let template = `
                         <article class="minret">
                             <h2>${ret.navn}</h2>
@@ -187,6 +188,7 @@
 
                     dest.insertAdjacentHTML("beforeend", template);
 
+                    //vi bruger lastElementChild hvor man offivcielt siger at man tager fat på den "sidste del af listen". Det er fordi vi er i en Loop og der bliver der læst 1 ad gangen. Man bliver derfor nød til at tage fat på den sidste i loopen for at få den til at gå rundt. Man kan få dat på alle.
                     dest.lastElementChild.addEventListener("click", () => {
                         visSingle(ret);
                     });
@@ -194,43 +196,45 @@
 
             });
 
-            //bibehold de her linjer i funktionen visRetter
+            //For hver knap man trykker på i menuen som har classen filter der skal der sendes videre til funktionen filtrering
             document.querySelectorAll(".filter").forEach(elm => {
                 elm.addEventListener("click", filtrering);
             });
 
-            //skriv funktionerne uden for hinanden, efter hinanden, det holder en bedre orden
-            function filtrering() {
-                document.querySelectorAll(".filter").forEach(elm => {
-                    elm.classList.remove("valgt");
-                });
-                this.classList.add("valgt");
 
-
-                document.querySelector("h1").textContent = this.textContent;
-
-                filter = this.getAttribute("data-ret");
-                visRetter();
-
-            }
-
-            //bibehold de her linjer i funktionen visRetter
+            //For hver knap man trykker på i menuen som har pris -hvilket kun er 1 tilfælde her - så skal der sendes videre til funktionen pris
             document.querySelectorAll(".pris").forEach(elm => {
                 elm.addEventListener("click", pris);
             });
-            //skriv funktionerne uden for hinanden, efter hinanden, det holder en bedre orden
-            function pris() {
-                retter.sort((a, b) => {
-                    return (a.pris - b.pris);
-                });
-                visRetter();
-            }
+
 
         }
-        //denne her skal ikke stå der den kalder bare på start igen og den er urelevant
-        start();
+
+        //funktion der får retterne til at blive filreret efter kategori
+        function filtrering() {
+            document.querySelectorAll(".filter").forEach(elm => {
+                elm.classList.remove("valgt");
+            });
+            this.classList.add("valgt");
+
+            //overskriften på siden siden til ændre sig alt efter den valgte/this filter knap
+            document.querySelector("h1").textContent = this.textContent;
+
+            filter = this.getAttribute("data-ret");
+            visRetter();
+
+        }
+
+        //funktion der får retterne til at blive sorteret efter pris
+        function pris() {
+            retter.sort((a, b) => {
+                return (a.pris - b.pris);
+            });
+            visRetter();
+        }
 
 
+        //en funktion der får retterne til at blive sorteret efter pris.
         function visSingle(ret) {
             document.querySelector("#indhold").innerHTML = `
                     <article class="minret">
@@ -245,6 +249,7 @@
             document.querySelector("#popup #luk").addEventListener("click", close);
         }
 
+        //at pop up viduet kan lukke
         function close() {
             document.querySelector("#popup").style.display = "none";
         }
