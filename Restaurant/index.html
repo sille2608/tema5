@@ -84,11 +84,22 @@
     <main>
         <section id="frontpage">
             <div class="image_container">
-                <img src="img/forside_pasta_mobil.jpg" alt="pasta">
+
+               <div id="splash">
+                <picture>
+                    <source media="(min-width: 1500px)" srcset="img/forside_pasta_desktop_stor.jpg">
+                    <source media="(min-width: 1130px)" srcset="img/forside_pasta_desktop_lille.jpg">
+                    <source media="(min-width: 460px)" srcset="img/forside_pasta_ipad.jpg">
+
+                     <img src="img/forside_pasta_mobil.jpg" alt="pasta">
+                </picture>
+            </div>
+
                 <button class="book_nu">
                     <h4>book nu</h4>
                 </button>
                 <img class="pil" src="img/pil.svg" alt="pil symbol">
+
             </div>
         </section>
 
