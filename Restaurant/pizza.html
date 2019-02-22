@@ -61,9 +61,9 @@
             <nav>
                 <div id="menuknap">☰</div>
                 <ul id="menu" class="hidden">
-                    <li><a href="portfolio.html">
-                            <h2>MENU</h2>
-                        </a></li>
+                    <li>
+                        <h2>MENU</h2>
+                    </li>
                     <li> <a href="pizza.html">- Pizza</a></li>
                     <li> <a href="pasta.html">- Pasta</a></li>
                     <li> <a href="forretter.html">- Forretter</a></li>
@@ -83,14 +83,28 @@
 
 
     <main>
-        <section id="header">
-            <img src="img/pizza_header.jpg" alt="pasta">
+        <section id="header" class="pizza">
+            <div id="splash">
+                <picture>
+                    <source media="(min-width: 1500px)" srcset="img/pizza_header_desktop_stor.jpg">
+                    <source media="(min-width: 1130px)" srcset="img/pizza_header_desktop_lille.jpg">
+                    <source media="(min-width: 460px)" srcset="img/pizza_header_ipad.jpg">
+
+                    <img src="img/pizza_header.jpg" alt="forside">
+                </picture>
+            </div>
+
+
             <div class="kategori_overskrift">
                 <h1>Pizza</h1>
                 <p>Prøv vores lækre italienske pizzaer</p>
-                <p>V</p>
+                <img class="pil" src="img/pil.svg" alt="pil symbol">
             </div>
         </section>
+
+
+
+
 
         <section id="liste" class="minret"> </section>
     </main>
@@ -142,9 +156,9 @@
             });
         }
 
-            function visSingle(ret) {
-                console.log("klik pop op")
-                document.querySelector("#indhold").innerHTML = `
+        function visSingle(ret) {
+            console.log("klik pop op")
+            document.querySelector("#indhold").innerHTML = `
                     <article class="minret">
                         <h2>${ret.navn}</h2>
                         <img src=img/${ret.billede}.jpg alt=${ret.navn}>
@@ -152,29 +166,30 @@
                         <p>Pris: ${ret.pris},-</p>
                     </article>`;
 
-                document.querySelector("#popup").style.display = "block";
-                document.querySelector("#popup #luk").addEventListener("click", close);
+            document.querySelector("#popup").style.display = "block";
+            document.querySelector("#popup #luk").addEventListener("click", close);
+        }
+
+        //at pop up viduet kan lukke
+        function close() {
+            document.querySelector("#popup").style.display = "none";
+        }
+
+        function toggleMenu() {
+            console.log("Toggle menu");
+            document.querySelector("#menu").classList.toggle("hidden");
+
+            let erSkjult = document.querySelector("#menu").classList.contains("hidden");
+
+            if (erSkjult == true) {
+                //menuen er nu skjult - ændre menuknappen til burgersymbol
+                document.querySelector("#menuknap").textContent = "☰";
+            } else {
+                //menuen er vist - ændre til X
+                document.querySelector("#menuknap").textContent = "X";
             }
+        }
 
-            //at pop up viduet kan lukke
-            function close() {
-                document.querySelector("#popup").style.display = "none";
-            }
-
-            function toggleMenu() {
-                console.log("Toggle menu");
-                document.querySelector("#menu").classList.toggle("hidden");
-
-                let erSkjult = document.querySelector("#menu").classList.contains("hidden");
-
-                if (erSkjult == true) {
-                    //menuen er nu skjult - ændre menuknappen til burgersymbol
-                    document.querySelector("#menuknap").textContent = "☰";
-                } else {
-                    //menuen er vist - ændre til X
-                    document.querySelector("#menuknap").textContent = "X";
-                }
-            }
     </script>
 
 </body>

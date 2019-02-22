@@ -62,13 +62,13 @@
             <nav>
                 <div id="menuknap">☰</div>
                 <ul id="menu" class="hidden">
-                    <li><a href="portfolio.html">
-                            <h2>MENU</h2>
-                        </a></li>
-                    <li class="filter" data-ret="pizza"> <a href="pizza.html">- Pizza</a></li>
-                    <li class="filter" data-ret="pasta"> <a href="pasta.html">- Pasta</a></li>
-                    <li class="filter" data-ret="forretter"> <a href="forretter.html">- Forretter</a></li>
-                    <li class="filter" data-ret="drikke"><a href="drikke.html">- Drikke</a></li>
+                    <li>
+                        <h2>MENU</h2>
+                    </li>
+                    <li> <a href="pizza.html">- Pizza</a></li>
+                    <li> <a href="pasta.html">- Pasta</a></li>
+                    <li> <a href="forretter.html">- Forretter</a></li>
+                    <li><a href="drikke.html">- Drikke</a></li>
                     <li> <a href="index.html#kontakt">
                             <h3>KONTAKT</h3>
                         </a></li>
@@ -83,12 +83,24 @@
     </header>
 
     <main>
-        <section id="header">
-            <img src="img/pasta_header.jpg" alt="pasta">
+        <section id="header" class="pasta">
+
+             <div id="splash">
+                <picture>
+                    <source media="(min-width: 1500px)" srcset="img/pasta_header_desktop_stor.jpg">
+                    <source media="(min-width: 1130px)" srcset="img/pasta_header_desktop_lille.jpg">
+                    <source media="(min-width: 460px)" srcset="img/pasta_header_ipad.jpg">
+
+                    <img src="img/pasta_header.jpg" alt="forside pasta">
+                </picture>
+            </div>
+
             <div class="kategori_overskrift">
                 <h1>Pasta</h1>
-                <p>Alle de klassiske pastaretter, lige som du elsker dem.</p>
+                <p>Klassiske pastaretter.</p>
+                <img class="pil" src="img/pil.svg" alt="pil symbol">
             </div>
+
         </section>
 
         <section id="liste"> </section>
