@@ -35,21 +35,20 @@ h3 {
     margin: 0
 }
 
+h4 {
+    font-family: 'Lato', sans-serif;
+    font-style: italic;
+    font-weight: 400;
+}
+
 p {
     font-family: 'Lato', sans-serif;
 
 }
 
-button {
-    border-style: solid;
-    border-color: black;
-    border-width: 0.1rem;
-    padding: 0.6rem;
-    font-size: 2rem;
-    font-family: 'Noto Serif JP', serif;
-    text-transform: uppercase;
-    color: black;
-}
+
+
+
 
 
 /********************MENU MOBIL********************/
@@ -59,7 +58,6 @@ button {
 }
 
 #menuknap {
-    position: relative;
     display: inline-block;
     width: 3rem;
     font-size: 3rem;
@@ -67,6 +65,7 @@ button {
     color: #e2e2e2;
     float: right;
     margin-right: 1rem;
+    position: fixed;
 }
 
 #menu {
@@ -105,11 +104,8 @@ header img {
 
 header {
     width: 100%;
-    display: inline;
-    position: fixed;
     z-index: 2;
-    display: flex;
-    flex-direction: column;
+    position: absolute;
 
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -117,12 +113,12 @@ header {
 
 #logo {
     grid-column: 1 / 3;
-    grid-row: 1 / 3;
+    padding-top: 0.5rem;
 }
 
-#mobilenav {
-    grid-column: 3/ 4;
-    grid-row: 1 / 2;
+.mobilenav {
+    grid-column: 4 / 5;
+    padding-left: 2rem;
 }
 
 /*****MENU BAR TABLET*****/
@@ -285,7 +281,7 @@ header {
 #luk {
     position: fixed;
     right: 2rem;
-    top: 28rem;
+    top: 29rem;
 }
 
 #luk button {
@@ -295,6 +291,7 @@ header {
     border: none;
     font-size: 1rem;
     text-transform: none;
+    background-color: lightgray;
 }
 
 
@@ -302,6 +299,32 @@ header {
 
 
 /***********************FORSIDE START************************/
+
+#frontpage {
+    position: relative;
+    margin: 0.1px;
+}
+
+.book_nu {
+    position: absolute;
+    top: 15rem;
+    left: 6.3rem;
+    border-style: solid;
+    border-color: white;
+    border-width: 0.1rem;
+    background: none;
+    height: 6rem;
+    width: 12rem;
+}
+
+.book_nu h4 {
+    margin: 0.1rem;
+    font-family: 'Noto Serif JP', serif;
+    font-style: normal;
+    font-size: 2rem;
+    text-transform: uppercase;
+    color: white;
+}
 
 
 #kontakt {
@@ -323,21 +346,37 @@ header {
 
 #om p {
     font-size: 1.1rem;
-    border-style: solid;
-    border-top-color: black;
-    border-width: 0.1rem;
+
     padding: 1rem;
 }
 
 #om article {
     background-color: white;
     padding: 1rem;
-    border: 1rem;
-    border-color: black;
 }
 
 /**********forside slut************/
 
+
+/***************UNDERSIDER******************/
+.kategori_overskrift {
+    position: absolute;
+    text-align: center;
+    color: white;
+    top: 29rem;
+    left: 4.2rem;
+}
+
+.kategori_overskrift h1 {
+    font-size: 4rem;
+    margin: 0rem;
+}
+
+
+.kategori_overskrifter p {
+    font-size: 1.3rem;
+    margin: 0.4rem;
+}
 
 @media only screen and (min-width:600px) {
     #liste {
@@ -355,3 +394,9 @@ header {
         text-align: left;
     }
 }
+/*
+section,article,div,img {
+    padding: 0;
+    margin: 0;
+}
+*/
