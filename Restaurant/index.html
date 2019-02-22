@@ -29,8 +29,8 @@
     <header>
 
         <div id="logo">
-           <a href="index.html">
-            <img src="img/logo-bellanis.svg" alt="logo">
+            <a href="index.html">
+                <img src="img/logo-bellanis.svg" alt="logo">
             </a>
         </div>
 
@@ -105,7 +105,7 @@
             </div>
         </section>
 
-           <section id="om">
+        <section id="om">
             <article>
                 <h1>Om</h1>
                 <p>Vi er stolte af at være noget ud over det sædvanlige; vi er i sandhed en familie, – en gruppe venner med et mål om at kunne få lov til at repræsentere det italienske køkken her i Danmark på en frisk, innovativ og kreativ måde.
@@ -125,7 +125,30 @@
 
 
 
-    <script src="script.js"></script>
+    <script src="script.js">
+
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+            document.querySelector("#menuknap").addEventListener("click", toggleMenu);
+        }
+
+        function toggleMenu() {
+            console.log("Toggle menu");
+            document.querySelector("#menu").classList.toggle("hidden");
+
+            let erSkjult = document.querySelector("#menu").classList.contains("hidden");
+
+            if (erSkjult == true) {
+                //menuen er nu skjult - ændre menuknappen til burgersymbol
+                document.querySelector("#menuknap").textContent = "☰";
+            } else {
+                //menuen er vist - ændre til X
+                document.querySelector("#menuknap").textContent = "X";
+            }
+        }
+
+    </script>
 </body>
 
 </html>

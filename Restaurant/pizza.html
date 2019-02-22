@@ -26,11 +26,11 @@
         <div id="indhold"></div>
     </div>
 
-   <header>
+    <header>
 
         <div id="logo">
             <a href="index.html">
-            <img src="img/logo-bellanis.svg" alt="logo">
+                <img src="img/logo-bellanis.svg" alt="logo">
             </a>
         </div>
 
@@ -64,10 +64,10 @@
                     <li><a href="portfolio.html">
                             <h2>MENU</h2>
                         </a></li>
-                    <li class="filter" data-ret="pizza"> <a href="pizza.html">- Pizza</a></li>
-                    <li class="filter" data-ret="pasta"> <a href="pasta.html">- Pasta</a></li>
-                    <li class="filter" data-ret="forretter"> <a href="forretter.html">- Forretter</a></li>
-                    <li class="filter" data-ret="drikke"><a href="drikke.html">- Drikke</a></li>
+                    <li> <a href="pizza.html">- Pizza</a></li>
+                    <li> <a href="pasta.html">- Pasta</a></li>
+                    <li> <a href="forretter.html">- Forretter</a></li>
+                    <li><a href="drikke.html">- Drikke</a></li>
                     <li> <a href="index.html#kontakt">
                             <h3>KONTAKT</h3>
                         </a></li>
@@ -92,10 +92,91 @@
             </div>
         </section>
 
-        <section id="liste"> </section>
+        <section id="liste" class="minret"> </section>
     </main>
 
-    <script src="script.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+
+        let minret = [];
+        let filter = "pizza";
+
+
+        async function start() {
+
+            document.querySelector("#menuknap").addEventListener("click", toggleMenu);
+
+            const myJson = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1Ce0MpS3pQLkFQKkJDRYkRL_1Zj4MiNf0M70b0WyJ6Nc");
+            retter = await myJson.json();
+
+            retter.sort((a, b) => {
+                return a.navn.localeCompare(b.navn);
+            });
+
+            visRetter();
+
+        }
+
+
+        function visRetter() {
+            let dest = document.querySelector("#liste");
+            retter.forEach(ret => {
+                if (ret.kategori == filter) {
+                    let template = `
+                        <article class=minret>
+                            <h2>${ret.navn}</h2>
+                            <img src=img/${ret.billede}.jpg alt=${ret.navn}>
+                            <p>${ret.kort}</p>
+                            <p>Pris: ${ret.pris},-</p>
+
+                        </article>`;
+
+                    dest.insertAdjacentHTML("beforeend", template);
+                    dest.lastElementChild.addEventListener("click", () => {
+                        visSingle(ret);
+                    });
+
+                }
+
+            });
+        }
+
+            function visSingle(ret) {
+                console.log("klik pop op")
+                document.querySelector("#indhold").innerHTML = `
+                    <article class="minret">
+                        <h2>${ret.navn}</h2>
+                        <img src=img/${ret.billede}.jpg alt=${ret.navn}>
+                        <p>${ret.lang}</p>
+                        <p>Pris: ${ret.pris},-</p>
+                    </article>`;
+
+                document.querySelector("#popup").style.display = "block";
+                document.querySelector("#popup #luk").addEventListener("click", close);
+            }
+
+            //at pop up viduet kan lukke
+            function close() {
+                document.querySelector("#popup").style.display = "none";
+            }
+
+            function toggleMenu() {
+                console.log("Toggle menu");
+                document.querySelector("#menu").classList.toggle("hidden");
+
+                let erSkjult = document.querySelector("#menu").classList.contains("hidden");
+
+                if (erSkjult == true) {
+                    //menuen er nu skjult - ændre menuknappen til burgersymbol
+                    document.querySelector("#menuknap").textContent = "☰";
+                } else {
+                    //menuen er vist - ændre til X
+                    document.querySelector("#menuknap").textContent = "X";
+                }
+            }
+    </script>
+
 </body>
 
 </html>
