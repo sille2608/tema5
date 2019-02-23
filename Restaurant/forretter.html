@@ -31,26 +31,24 @@
 
         <div id="logo">
             <a href="index.html">
-            <img src="img/logo-bellanis.svg" alt="logo">
+                <img src="img/logo-bellanis.svg" alt="logo">
             </a>
         </div>
 
         <!---desktop menu---->
         <div class="siteheader">
-            <nav>
-                <div class="dropdowndesktop">
-                    <a href="portfolio.html" class="portfolie"> MENU </a>
+            <div class="dropdowndesktop">
+                <a href=""> MENU </a>
 
-                    <div class="dropdown-contentdesktop">
-                        <a href="portfolio.html#postmodernisme">- PIZZA</a>
-                        <a href="portfolio.html#video">- PASTA</a>
-                        <a href="portfolio.html#bibliotekaren">- FORRETTER</a>
-                        <a href="portfolio.html#prototype">- DRIKKE</a>
-                    </div>
+                <div class="dropdown-contentdesktop">
+                    <a href="pizza.html">- PIZZA</a>
+                    <a href="pasta.html">- PASTA</a>
+                    <a href="forretter.html">- FORRETTER</a>
+                    <a href="drikke.html">- DRIKKE</a>
                 </div>
-                <a href="om.html">KONTAKT</a>
-                <a href="kontakt.html">OM</a>
-            </nav>
+            </div>
+            <a href="#kontakt">KONTAKT</a>
+            <a href="#om">OM</a>
 
         </div>
 
@@ -85,7 +83,7 @@
     <main>
         <section id="header" class="forretter">
 
-           <div id="splash">
+            <div id="splash">
                 <picture>
                     <source media="(min-width: 1500px)" srcset="img/forretter_header_desktop_stor.jpg">
                     <source media="(min-width: 1130px)" srcset="img/forretter_header_desktop_lille.jpg">
@@ -107,7 +105,7 @@
         <section id="liste"> </section>
     </main>
 
-     <script>
+    <script>
         document.addEventListener("DOMContentLoaded", start);
 
         let minret = [];
@@ -153,9 +151,9 @@
             });
         }
 
-            function visSingle(ret) {
-                console.log("klik pop op")
-                document.querySelector("#indhold").innerHTML = `
+        function visSingle(ret) {
+            console.log("klik pop op")
+            document.querySelector("#indhold").innerHTML = `
                     <article class="minret">
                         <h2>${ret.navn}</h2>
                         <img src=img/${ret.billede}.jpg alt=${ret.navn}>
@@ -163,29 +161,29 @@
                         <p>Pris: ${ret.pris},-</p>
                     </article>`;
 
-                document.querySelector("#popup").style.display = "block";
-                document.querySelector("#popup #luk").addEventListener("click", close);
+            document.querySelector("#popup").style.display = "block";
+            document.querySelector("#popup #luk").addEventListener("click", close);
+        }
+
+        //at pop up viduet kan lukke
+        function close() {
+            document.querySelector("#popup").style.display = "none";
+        }
+
+        function toggleMenu() {
+            console.log("Toggle menu");
+            document.querySelector("#menu").classList.toggle("hidden");
+
+            let erSkjult = document.querySelector("#menu").classList.contains("hidden");
+
+            if (erSkjult == true) {
+                //menuen er nu skjult - ændre menuknappen til burgersymbol
+                document.querySelector("#menuknap").textContent = "☰";
+            } else {
+                //menuen er vist - ændre til X
+                document.querySelector("#menuknap").textContent = "X";
             }
-
-            //at pop up viduet kan lukke
-            function close() {
-                document.querySelector("#popup").style.display = "none";
-            }
-
-            function toggleMenu() {
-                console.log("Toggle menu");
-                document.querySelector("#menu").classList.toggle("hidden");
-
-                let erSkjult = document.querySelector("#menu").classList.contains("hidden");
-
-                if (erSkjult == true) {
-                    //menuen er nu skjult - ændre menuknappen til burgersymbol
-                    document.querySelector("#menuknap").textContent = "☰";
-                } else {
-                    //menuen er vist - ændre til X
-                    document.querySelector("#menuknap").textContent = "X";
-                }
-            }
+        }
     </script>
 </body>
 

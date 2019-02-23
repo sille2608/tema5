@@ -122,123 +122,6 @@ header {
     padding-left: 2rem;
 }
 
-/*****MENU BAR TABLET*****/
-
-@media only screen and (min-width:400px) {
-    header img {
-        max-width: 12rem;
-        margin-left: 2rem;
-    }
-}
-
-/******MENU BAR DESCTOP******/
-
-@media only screen and (min-width: 945px) {
-    .mobilenav {
-        display: none;
-    }
-
-    .dropdowndesktop {
-        float: left;
-        overflow: hidden;
-    }
-
-    .dropdowndesktop .portfolie {
-        font-family: 'Montserrat', sans-serif;
-        font-size: 22px;
-        color: white;
-        padding-right: 1rem;
-        text-align: right;
-        border: none;
-        outline: none;
-        margin: 0;
-        content: "\u2261";
-        line-height: 1.2rem;
-        background-color: #c9c9c9;
-    }
-
-    header .portfolie {
-        margin: 0;
-        padding: 0;
-
-    }
-
-    .dropdown-contentdesktop {
-        display: none;
-        position: absolute;
-        background-color: darkgray;
-        min-width: 140px;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-        z-index: 1;
-    }
-
-    .dropdown-contentdesktop a {
-        padding: 7px 10px;
-        font-weight: 400;
-        display: block;
-        text-align: left;
-        color: white;
-    }
-
-    .dropdown-contentdesktop a:hover {
-        background-color: lightgrey;
-    }
-
-    .dropdowndesktop:hover .dropdown-contentdesktop {
-        display: block;
-    }
-
-    header {
-        width: 100%;
-        display: inline;
-        position: fixed;
-        z-index: 2;
-        display: flex;
-        flex-direction: column;
-    }
-
-    header .siteheader {
-        height: 60px;
-        width: 100%;
-        background-color: #c9c9c9;
-        display: flex;
-        flex-wrap: nowrap;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        line-height: 1.2rem;
-    }
-
-    .siteheader a:hover {
-        color: black;
-    }
-
-    header .portfolie:hover {
-        color: black;
-    }
-
-    /*ingen streg under links*/
-    header nav a {
-        text-decoration: none;
-        padding-right: 1rem;
-    }
-
-    header a {
-        line-height: 1.2rem;
-        font-size: 22px;
-    }
-
-    header img {
-        max-width: 15rem;
-        margin-left: 3rem;
-    }
-
-    .siteheader nav {
-        margin-right: 2.5rem;
-    }
-
-}
-
 /********menu slut*************/
 
 
@@ -434,19 +317,137 @@ header {
 }
 
 
+
+
+@media only screen and (min-width:400px) {
+
+    /*****menu bar*****/
+    header img {
+        max-width: 20rem;
+        margin-left: 2rem;
+    }
+}
+
+
 @media only screen and (min-width:600px) {
+
+    /*****css grid******/
     #liste {
         grid-template-columns: repeat(2, 1fr);
     }
 
 }
 
-@media only screen and (min-width:900px) {
+
+@media only screen and (min-width: 945px) {
+
+
+    /******menu bar******/
+
+    .mobilenav {
+        display: none;
+    }
+
+    .siteheader {
+        display: inline-block;
+    }
+
+    nav {
+        width: 30rem;
+        text-align: right;
+        flex-direction: row;
+        display: flex;
+        text-decoration: none;
+    }
+
+    .dropdown-contentdesktop {
+        display: none;
+        position: absolute;
+        background-color: darkgray;
+        min-width: 140px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+
+    .dropdown-contentdesktop a {
+        padding: 7px 10px;
+        font-weight: 400;
+        display: block;
+        text-align: left;
+        color: white;
+    }
+
+    .dropdown-contentdesktop a {
+        padding: 7px 10px;
+        font-weight: 400;
+        display: block;
+        text-align: left;
+        color: white;
+    }
+
+    .dropdowndesktop {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 22px;
+        color: white;
+        padding-right: 1rem;
+        text-align: right;
+        border: none;
+        outline: none;
+        margin: 0;
+        content: "\u2261";
+        line-height: 1.2rem;
+        background-color: #c9c9c9;
+    }
+
+    .dropdown-contentdesktop a:hover {
+        background-color: lightgrey;
+    }
+
+    .dropdowndesktop:hover .dropdown-contentdesktop {
+        display: block;
+    }
+
+     header {
+        width: 100%;
+        z-index: 2;
+        flex-direction: column;
+    }
+
+     header nav a {
+        text-decoration: none;
+        padding-right: 1rem;
+    }
+
+      .siteheader a:hover {
+        color: black;
+    }
+
+    header .portfolie:hover {
+        color: black;
+    }
+
+     header .siteheader {
+        height: 60px;
+        width: 100%;
+        background-color: #c9c9c9;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        line-height: 1.2rem;
+    }
+
+    header a {
+        line-height: 1.2rem;
+        font-size: 22px;
+    }
+
+
+    /*****Css grid ****/
     #liste {
         grid-template-columns: repeat(3, 1fr);
     }
 
-    nav {
-        text-align: left;
-    }
 }
+
