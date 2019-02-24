@@ -63,6 +63,8 @@ p {
     float: right;
     margin-right: 1rem;
     position: fixed;
+    right: 1rem;
+    top: 0rem;
 }
 
 #menu {
@@ -74,7 +76,7 @@ p {
     min-width: 15rem;
     min-height: 30rem;
     z-index: 1;
-    right: 1rem;
+    right: 3rem;
     top: 1.9rem;
     text-align: right;
     padding-right: 1rem;
@@ -256,6 +258,11 @@ header {
 
 
 /***************UNDERSIDER******************/
+
+.kategori_container {
+    width: 100%
+}
+
 .kategori_overskrift {
     position: absolute;
     text-align: center;
@@ -286,7 +293,7 @@ header {
     margin: 0rem;
 }
 
-.forretter .kategori_overskrift h1 {
+.forretter h1 {
     font-size: 3rem;
 }
 
@@ -326,6 +333,37 @@ header {
         max-width: 20rem;
         margin-left: 2rem;
     }
+
+    .image_container {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    #splash {
+        width: 100%;
+        grid-column: 1 / 4;
+    }
+
+    .book_nu {
+        z-index: 2;
+        grid-column: 3 / 3;
+        top: 40%;
+        left: 32%;
+        width: 18rem;
+    }
+
+    .book_nu h4 {
+        font-size: 3rem;
+    }
+
+    .pil {
+        top: 89%;
+        left: 45%;
+        max-width: 7rem;
+    }
+
+
 }
 
 
@@ -336,10 +374,98 @@ header {
         grid-template-columns: repeat(2, 1fr);
     }
 
+    .pizza .kategori_overskrift {
+        top: 63%;
+        left: 18%;
+    }
+
+    .pizza h1 {
+        font-size: 8rem;
+    }
+
+    .drikke h1 {
+        font-size: 8rem;
+    }
+
+    .pasta h1 {
+        font-size: 8rem;
+    }
+
+    .forretter h1 {
+        font-size: 6rem;
+    }
+
+    .pizza p {
+        font-size: 2rem;
+    }
+
+    .pasta p {
+        font-size: 2rem;
+    }
+
+    .drikke p {
+        font-size: 2rem;
+    }
+
+
+    .forretter .kategori_overskrift p {
+        font-size: 2rem;
+        width: 36rem;
+    }
+
+    .pizza .pil {
+        top: 110%;
+        left: 38%;
+    }
+
+    .pasta .pil {
+        top: 110%;
+        left: 38%;
+    }
+
+    .forretter .pil {
+        top: 110%;
+        left: 38%;
+    }
+
+    .drikke .pil {
+        top: 110%;
+        left: 38%;
+    }
+
+    .pasta .kategori_overskrift {
+        top: 64%;
+        left: 23%;
+    }
+
+
+    .forretter .kategori_overskrift {
+        top: 67%;
+        left: 11%;
+    }
+
+
+    .drikke .kategori_overskrift {
+        top: 64%;
+        left: 15%;
+    }
+
+
+}
+
+@media only screen and (min-width:850px) {
+    .book_nu {
+        top: 40%;
+        left: 35%;
+    }
+
+    .book_nu h4 {
+        font-size: 3rem;
+    }
 }
 
 
-@media only screen and (min-width: 945px) {
+@media only screen and (min-width: 1130px) {
 
 
     /******menu bar******/
@@ -350,20 +476,26 @@ header {
 
     .siteheader {
         display: inline-block;
+        grid-column: 4 / 5;
+        padding-right: 2rem;
     }
 
     nav {
         width: 30rem;
-        text-align: right;
         flex-direction: row;
         display: flex;
         text-decoration: none;
+        font-family: 'Noto Serif JP', serif;
+    }
+
+    nav a {
+        color: white;
     }
 
     .dropdown-contentdesktop {
         display: none;
         position: absolute;
-        background-color: darkgray;
+        background-color: none;
         min-width: 140px;
         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
         z-index: 1;
@@ -375,6 +507,7 @@ header {
         display: block;
         text-align: left;
         color: white;
+        background-color: none;
     }
 
     .dropdown-contentdesktop a {
@@ -383,71 +516,214 @@ header {
         display: block;
         text-align: left;
         color: white;
+        background-color: none;
     }
 
     .dropdowndesktop {
-        font-family: 'Montserrat', sans-serif;
+        font-family: 'Noto Serif JP', serif;
         font-size: 22px;
         color: white;
-        padding-right: 1rem;
+        padding-right: 2rem;
         text-align: right;
         border: none;
         outline: none;
         margin: 0;
         content: "\u2261";
         line-height: 1.2rem;
-        background-color: #c9c9c9;
     }
 
-    .dropdown-contentdesktop a:hover {
-        background-color: lightgrey;
+    header {
+        width: 100%;
+        z-index: 2;
+        flex-direction: column;
+    }
+
+    header nav a {
+        text-decoration: none;
+        padding-right: 2rem;
+    }
+
+    header .siteheader {
+        height: 60px;
+        width: 100%;
+        background-color: none;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        align-items: center;
+        line-height: 1.2rem;
+    }
+
+    header a {
+        line-height: 2rem;
+        font-size: 40px;
+    }
+
+    .siteheader a:hover {
+        text-decoration: underline;
+        color: darkgray;
     }
 
     .dropdowndesktop:hover .dropdown-contentdesktop {
         display: block;
     }
 
-     header {
-        width: 100%;
-        z-index: 2;
-        flex-direction: column;
-    }
-
-     header nav a {
-        text-decoration: none;
-        padding-right: 1rem;
-    }
-
-      .siteheader a:hover {
-        color: black;
-    }
-
-    header .portfolie:hover {
-        color: black;
-    }
-
-     header .siteheader {
-        height: 60px;
-        width: 100%;
-        background-color: #c9c9c9;
-        display: flex;
-        flex-wrap: nowrap;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        line-height: 1.2rem;
-    }
-
-    header a {
-        line-height: 1.2rem;
-        font-size: 22px;
-    }
 
 
     /*****Css grid ****/
     #liste {
         grid-template-columns: repeat(3, 1fr);
     }
+
+    /*****forside book nu og pil ****/
+
+    .book_nu {
+        top: 40%;
+        left: 38%;
+        width: 18rem;
+    }
+
+    .book_nu h4 {
+        font-size: 3rem;
+    }
+
+    .pil {
+        top: 85%;
+        left: 45%;
+        max-width: 7rem;
+    }
+
+    /*****kategori overskrift og pil placering******/
+
+
+    .pizza h1 {
+        font-size: 6rem;
+    }
+
+    .drikke h1 {
+        font-size: 6rem;
+    }
+
+    .pasta h1 {
+        font-size: 6rem;
+    }
+
+    .forretter h1 {
+        font-size: 5rem;
+    }
+
+    .pizza p {
+        font-size: 1.8rem;
+    }
+
+    .pasta p {
+        font-size: 1.8rem;
+    }
+
+    .drikke p {
+        font-size: 1.8rem;
+    }
+
+
+    .forretter .kategori_overskrift p {
+        font-size: 1.8rem;
+        width: 36rem;
+    }
+
+
+    .pizza .kategori_overskrift {
+        top: 60%;
+        left: 28%;
+    }
+
+    .pizza .pil {
+        max-width: 5rem;
+    }
+
+    .pasta .pil {
+        max-width: 5rem;
+    }
+
+    .forretter .pil {
+        top: 110%;
+        left: 38%;
+        max-width: 5rem;
+    }
+
+    .drikke .pil {
+        top: 110%;
+        left: 38%;
+        max-width: 5rem;
+    }
+
+    .pasta .kategori_overskrift {
+        top: 60%;
+        left: 38%;
+    }
+
+
+    .forretter .kategori_overskrift {
+        top: 63%;
+        left: 25%;
+    }
+
+
+    .drikke .kategori_overskrift {
+        top: 60%;
+        left: 33%;
+    }
+
+
+}
+
+@media only screen and (min-width: 1500px) {
+
+    .book_nu {
+        left: 39%;
+        width: 18rem;
+    }
+
+    .book_nu h4 {
+        font-size: 3rem;
+    }
+
+    .pil {
+        top: 85%;
+        left: 45%;
+        max-width: 7rem;
+    }
+
+    /*****kategori overskrift og pil placering******/
+
+
+    .pizza .kategori_overskrift {
+        top: 50%;
+        left: 34%;
+    }
+
+    .pasta .kategori_overskrift {
+        top: 50%;
+        left: 40%;
+    }
+
+
+    .forretter .kategori_overskrift {
+        top: 50%;
+        left: 31%;
+    }
+
+    .forretter .pil {
+        left: 16rem;
+    }
+
+
+    .drikke .kategori_overskrift {
+        top: 50%;
+        left: 37%;
+    }
+
+
+
 
 }
 
