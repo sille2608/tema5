@@ -219,6 +219,10 @@ header {
     left: 9rem;
 }
 
+.kontakt_container {
+    display: grid;
+    grid-template-columns: 1fr;
+}
 
 #kontakt {
     background-color: grey;
@@ -233,8 +237,17 @@ header {
     text-align: left;
 }
 
+#kontakt h1 {
+    margin: 0rem;
+}
+
 #om {
     background-color: white;
+}
+
+.om_container {
+    display: grid;
+    grid-template-columns: 1fr;
 }
 
 #om p {
@@ -450,6 +463,29 @@ header {
         left: 15%;
     }
 
+    /****kontakt sektionen****/
+    .kontakt_container {
+        grid-template-columns: 1fr 1fr;
+        padding-left: 6rem;
+        padding-bottom: 1rem;
+        padding-top: 1rem;
+    }
+
+    .kontakt_container p {
+        font-size: 1.3rem;
+    }
+
+    /***om***/
+    .om_container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .om_container p {
+        font-size: 1.3rem;
+        line-height: 1.5rem;
+    }
+
 
 }
 
@@ -568,6 +604,25 @@ header {
         display: block;
     }
 
+    /***kontakt***/
+    .kontakt_container {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        padding-left: 6rem;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    /***om***/
+
+    #om p {
+        font-size: 1.2rem;
+        line-height: 2rem;
+        margin: 1rem;
+    }
+
+    #om h1 {
+        padding-left: 2rem;
+    }
 
 
     /*****Css grid ****/
@@ -723,7 +778,31 @@ header {
     }
 
 
+    /***kontakt***/
+    .kontakt_container {
+        padding-left: 8rem;
+        padding-top: 2rem;
+        padding-bottom: 3rem;
+    }
+
+    .kontakt_container p {
+        font-size: 1.5rem;
+    }
+
+
+    /***om***/
+
+    #om p {
+        font-size: 1.2rem;
+        line-height: 2rem;
+        margin: 1rem 2rem 4rem 2rem; ;
+    }
+
+    #om h1 {
+        padding-left: 3rem;
+        padding-top: 1rem;
+    }
+
 
 
 }
-
