@@ -37,8 +37,8 @@ h3 {
 
 h4 {
     font-family: 'Lato', sans-serif;
-    font-style: italic;
-    font-weight: 400;
+    font-weight: 900;
+    color: white;
 }
 
 p {
@@ -194,7 +194,7 @@ header {
 .book_nu {
     position: absolute;
     top: 16rem;
-    left: 6.3rem;
+    left: 5.3rem;
     border-style: solid;
     border-color: white;
     border-width: 0.1rem;
@@ -225,21 +225,27 @@ header {
 }
 
 #kontakt {
-    background-color: grey;
+    background-color: rgb(167, 167, 167);
 }
 
 #kontakt article {
     padding: 2rem;
+    text-align: center;
 }
 
 #kontakt p {
     color: white;
-    text-align: left;
     font-weight: 100;
+    text-align: center;
 }
 
 #kontakt h1 {
     margin: 0rem;
+    display: none;
+}
+
+#kontakt h4 {
+    font-family:
 }
 
 #om {
@@ -473,6 +479,16 @@ header {
 
     .kontakt_container p {
         font-size: 1.3rem;
+    }
+
+
+    #kontakt article {
+        padding: 2rem;
+        text-align: left;
+    }
+
+    #kontakt p {
+        text-align: left;
     }
 
 
@@ -814,13 +830,22 @@ header {
 
     /***kontakt***/
     .kontakt_container {
-        padding-left: 8rem;
+        padding-left: 13rem;
         padding-top: 2rem;
         padding-bottom: 3rem;
     }
 
     .kontakt_container p {
         font-size: 1.5rem;
+        font-weight: 100;
+    }
+
+    #kontakt h4 {
+        font-size: 1.2rem;
+    }
+
+    #kontakt h1 {
+        padding-left: 3rem;
     }
 
 
