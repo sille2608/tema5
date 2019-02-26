@@ -21,10 +21,12 @@
 
 
     <div id="popup">
-        <div id="luk">
-            <button> Luk vindue </button>
+
+        <div id="indhold">
+            <div id="luk">
+                <button> Luk vindue </button>
+            </div>
         </div>
-        <div id="indhold"></div>
     </div>
 
     <header>
@@ -114,6 +116,7 @@
 
         let minret = [];
         let filter = "pasta";
+        let dest = document.querySelector("#liste");
 
 
         async function start() {
@@ -157,16 +160,32 @@
 
         function visSingle(ret) {
             console.log("klik pop op")
-            document.querySelector("#indhold").innerHTML = `
-                    <article class="minret">
+
+            let dest = document.querySelector("#indhold");
+            let node = document.querySelector("#indhold .minret");
+
+
+            if (node) {
+                dest.removeChild(node);
+                // console.log("test",node);
+
+
+
+            }
+
+
+            let popOp = ` <article class="minret">
                         <h2>${ret.navn}</h2>
                         <img src=img/${ret.billede}.jpg alt=${ret.navn}>
                         <p>${ret.lang}</p>
                         <p>Pris: ${ret.pris},-</p>
                     </article>`;
 
+            dest.insertAdjacentHTML("afterbegin", popOp);
+
             document.querySelector("#popup").style.display = "block";
             document.querySelector("#popup #luk").addEventListener("click", close);
+
         }
 
         //at pop up viduet kan lukke
