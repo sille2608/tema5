@@ -188,6 +188,20 @@
                 document.querySelector("#menuknap").textContent = "X";
             }
         }
+
+        const htmlTag = document.querySelector('html');
+        const bodyTag = document.querySelector('body');
+        const myNav = document.querySelector('.siteheader');
+        const myElem = document.querySelector('nav');
+
+        let scrolled = () => {
+            let dec = scrollY / (bodyTag.scrollHeight - innerHeight);
+            return Math.floor(dec * 600);
+        }
+
+        addEventListener('scroll', () => {
+            myNav.style.setProperty('background', scrolled() > 50 ? "var(--menu-bottom-color)" : "var(--menu-top-color)");
+        });
     </script>
 </body>
 

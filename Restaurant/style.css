@@ -1,5 +1,10 @@
 /**********generalt******/
 
+:root {
+    --menu-top-color: none;
+    --menu-bottom-color: rgba(100, 100, 100, 0.63);
+}
+
 body * {
     box-sizing: border-box;
 }
@@ -59,7 +64,7 @@ p {
     width: 3rem;
     font-size: 3rem;
     font-family: Montserrat;
-    color: #e2e2e2;
+    color: #b9b9b9;
     float: right;
     margin-right: 1rem;
     position: fixed;
@@ -72,7 +77,7 @@ p {
     transition: transform 1s;
     transform-origin: top right;
     position: fixed;
-    background-color: #aaaaaa;
+    background-color: #b9b9b9;
     min-width: 15rem;
     min-height: 30rem;
     z-index: 1;
@@ -155,6 +160,7 @@ header {
     background-color: hsla(0, 0%, 42%, 0.52);
     display: none;
     overflow: scroll;
+    z-index: 2;
 }
 
 #indhold {
@@ -165,9 +171,9 @@ header {
 }
 
 #luk {
-    position: fixed;
-    right: 2rem;
-    top: 29rem;
+    justify-content: flex-end;
+    display: flex;
+    padding: 1rem;
 }
 
 #luk button {
@@ -225,7 +231,7 @@ header {
 }
 
 #kontakt {
-    background-color: rgb(167, 167, 167);
+    background-color: rgb(168, 168, 168);
 }
 
 #kontakt article {
@@ -265,7 +271,6 @@ header {
 }
 
 #om article {
-    background-color: white;
     padding: 1rem;
 }
 
@@ -505,10 +510,6 @@ header {
     }
 
     /*****Pop op vindue****/
-    #luk {
-        right: 4rem;
-        top: 40rem;
-    }
 
     #indhold {
         min-height: 0vh;
@@ -517,8 +518,6 @@ header {
         margin: 4rem auto;
         padding: 1rem;
     }
-
-
 
 }
 
@@ -547,18 +546,25 @@ header {
         display: inline-block;
         grid-column: 4 / 5;
         padding-right: 2rem;
+        position: fixed;
+        width: 100%;
+        height: 100px;
+        background: none;
+        justify-content: flex-end;
+        transition: all 350ms ease-out;
     }
 
     nav {
-        width: 30rem;
         flex-direction: row;
         display: flex;
         text-decoration: none;
         font-family: 'Noto Serif JP', serif;
+
     }
 
     nav a {
         color: white;
+        padding-top: 2rem;
     }
 
     .dropdown-contentdesktop {
@@ -568,15 +574,8 @@ header {
         min-width: 140px;
         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
         z-index: 1;
-    }
-
-    .dropdown-contentdesktop a {
-        padding: 7px 10px;
-        font-weight: 400;
-        display: block;
-        text-align: left;
-        color: white;
-        background-color: none;
+        max-width: 100%;
+        top: 6.2rem;
     }
 
     .dropdown-contentdesktop a {
@@ -592,13 +591,14 @@ header {
         font-family: 'Noto Serif JP', serif;
         font-size: 22px;
         color: white;
-        padding-right: 2rem;
         text-align: right;
         border: none;
         outline: none;
         margin: 0;
         content: "\u2261";
         line-height: 1.2rem;
+        padding-top: 2rem;
+        max-width: 100%;
     }
 
     header {
@@ -613,7 +613,7 @@ header {
     }
 
     header .siteheader {
-        height: 60px;
+        height: 100px;
         width: 100%;
         background-color: none;
         display: flex;
@@ -629,13 +629,14 @@ header {
     }
 
     .siteheader a:hover {
-        text-decoration: underline;
-        color: darkgray;
+        transform: scale(1.1);
     }
 
     .dropdowndesktop:hover .dropdown-contentdesktop {
         display: block;
+        background-color: var(--menu-bottom-color);
     }
+
 
     /***kontakt***/
     .kontakt_container {
@@ -662,6 +663,24 @@ header {
     #liste {
         grid-template-columns: repeat(3, 1fr);
     }
+
+
+    .minret {
+        transition: all .5s ease-in-out;
+    }
+
+    .minret:hover {
+        transform: scale(1.05);
+    }
+
+    #popup .minret {
+        transition: none;
+    }
+
+    #popup .minret:hover {
+        transform: none;
+    }
+
 
     /*****forside book nu og pil ****/
 
@@ -762,11 +781,7 @@ header {
     }
 
     /*****Pop op vindue****/
-    #luk {
-        position: fixed;
-        right: 24rem;
-        top: 38rem;
-    }
+
 
     #indhold {
         min-height: 0vh;
@@ -775,8 +790,6 @@ header {
         margin: 4rem auto;
         padding: 2rem;
     }
-
-
 
 
 }
@@ -864,12 +877,6 @@ header {
     }
 
     /*******Pop op vindue*****/
-
-    #luk {
-        position: fixed;
-        right: 32rem;
-        top: 42rem;
-    }
 
     #indhold {
         background-color: white;

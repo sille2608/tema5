@@ -20,10 +20,12 @@
 <body>
 
     <div id="popup">
-        <div id="luk">
-            <button> Luk vindue </button>
+
+        <div id="indhold">
+            <div id="luk">
+                <button> Luk vindue </button>
+            </div>
         </div>
-        <div id="indhold"></div>
     </div>
 
     <header>
@@ -106,7 +108,7 @@
         </section>
 
 
-        <section id="liste"></section>
+        <section id="liste" class="grow"></section>
     </main>
 
 
@@ -115,7 +117,7 @@
 
         let minret = [];
         let filter = "pizza";
-
+        let dest = document.querySelector("#liste");
 
         async function start() {
 
@@ -134,7 +136,7 @@
 
 
         function visRetter() {
-            let dest = document.querySelector("#liste");
+
             retter.forEach(ret => {
                 if (ret.kategori == filter) {
                     let template = `
@@ -158,17 +160,34 @@
 
         function visSingle(ret) {
             console.log("klik pop op")
-            document.querySelector("#indhold").innerHTML = `
-                    <article class="minret">
+
+            let dest = document.querySelector("#indhold");
+            let node = document.querySelector("#indhold .minret");
+
+
+            if (node) {
+                dest.removeChild(node);
+                // console.log("test",node);
+
+
+
+            }
+
+
+            let popOp = ` <article class="minret">
                         <h2>${ret.navn}</h2>
                         <img src=img/${ret.billede}.jpg alt=${ret.navn}>
                         <p>${ret.lang}</p>
                         <p>Pris: ${ret.pris},-</p>
                     </article>`;
 
+            dest.insertAdjacentHTML("afterbegin", popOp);
+
             document.querySelector("#popup").style.display = "block";
             document.querySelector("#popup #luk").addEventListener("click", close);
+
         }
+
 
         //at pop up viduet kan lukke
         function close() {
@@ -189,6 +208,21 @@
                 document.querySelector("#menuknap").textContent = "X";
             }
         }
+
+
+        const htmlTag = document.querySelector('html');
+        const bodyTag = document.querySelector('body');
+        const myNav = document.querySelector('.siteheader');
+        const myElem = document.querySelector('nav');
+
+        let scrolled = () => {
+            let dec = scrollY / (bodyTag.scrollHeight - innerHeight);
+            return Math.floor(dec * 600);
+        }
+
+        addEventListener('scroll', () => {
+            myNav.style.setProperty('background', scrolled() > 50 ? "var(--menu-bottom-color)" : "var(--menu-top-color)");
+        });
     </script>
 
 </body>
