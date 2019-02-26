@@ -498,8 +498,10 @@ header {
         display: inline-block;
         grid-column: 1 / 3;
         grid-row: 1/2;
-        margin-top: 2rem;
-
+        margin: 1rem;
+        border-style: solid;
+        border-color: white;
+        border-width: 0.2rem;
     }
 
     .kontakt_container p {
@@ -664,8 +666,8 @@ header {
     /***kontakt***/
 
     .kontakt_logo {
-        margin-top: 2rem;
-        margin-left: 4rem;
+        margin-top: 1rem;
+        margin-left: 3rem;
     }
 
     /***om***/
@@ -884,8 +886,8 @@ header {
     }
 
     .kontakt_logo {
-        margin-top: 2rem;
-        margin-left: 4rem;
+        margin-top: 1rem;
+        margin-left: 1rem;
     }
 
     .kontakt_container {

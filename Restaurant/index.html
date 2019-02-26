@@ -164,9 +164,13 @@
 
 
                     <div class="kontakt_img">
-                        <div class="kontakt_logo">
-                            <img src="img/logo-bellanis.svg" alt="logo">
-                        </div>
+                        <picture class="kontakt_logo">
+                            <source media="(min-width: 1500px)" srcset="img/map_desktop_stor.jpg">
+                            <source media="(min-width: 1130px)" srcset="img/map_desktop_lille.jpg">
+                            <source media="(min-width: 460px)" srcset="img/map_ipad.jpg">
+
+                            <img src="img/map_ipad.jpg">
+                        </picture>
                     </div>
 
 
