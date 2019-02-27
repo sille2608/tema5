@@ -2,7 +2,7 @@
 
 :root {
     --menu-top-color: none;
-    --menu-bottom-color: rgba(100, 100, 100, 0.63);
+    --menu-bottom-color: rgba(185, 185, 185, 0.88);
 }
 
 body * {
@@ -10,7 +10,7 @@ body * {
 }
 
 body {
-    background-color: white;
+    background-color: #ffffff;
     margin: 0;
     padding: 0;
 }
@@ -43,7 +43,7 @@ h3 {
 h4 {
     font-family: 'Lato', sans-serif;
     font-weight: 900;
-    color: white;
+    color: #ffffff;
 }
 
 p {
@@ -91,12 +91,12 @@ p {
     font-family: 'Montserrat', sans-serif;
     font-size: 1rem;
     text-decoration: none;
-    color: white;
+    color: #ffffff;
     line-height: 3rem;
 }
 
 #menu h2 {
-    color: white;
+    color: #ffffff;
 }
 
 .siteheader {
@@ -145,7 +145,7 @@ header {
 .minret {
     padding: 1rem;
     border-style: solid;
-    border-top-color: black;
+    border-top-color: #000000;
     border-width: 0.1rem 0rem 0rem 0rem;
 }
 
@@ -165,7 +165,7 @@ header {
 
 #indhold {
     min-height: 50vh;
-    background-color: white;
+    background-color: #ffffff;
     width: 90vw;
     margin: 4rem auto;
 }
@@ -183,7 +183,7 @@ header {
     border: none;
     font-size: 1rem;
     text-transform: none;
-    background-color: lightgray;
+    background-color: #b9b9b9;
 }
 
 
@@ -202,7 +202,7 @@ header {
     top: 16rem;
     left: 5.3rem;
     border-style: solid;
-    border-color: white;
+    border-color: #ffffff;
     border-width: 0.1rem;
     background: none;
     height: 6rem;
@@ -231,7 +231,7 @@ header {
 }
 
 #kontakt {
-    background-color: rgb(168, 168, 168);
+    background-color: #a0a0a0;
 }
 
 #kontakt article {
@@ -240,7 +240,7 @@ header {
 }
 
 #kontakt p {
-    color: white;
+    color: #ffffff;
     font-weight: 100;
     text-align: center;
 }
@@ -259,7 +259,7 @@ header {
 }
 
 #om {
-    background-color: white;
+    background-color: #ffffff;
 }
 
 .om_container {
@@ -295,7 +295,7 @@ header {
 .kategori_overskrift {
     position: absolute;
     text-align: center;
-    color: white;
+    color: #ffffff;
     top: 29rem;
     left: 4.2rem;
 }
@@ -500,7 +500,7 @@ header {
         grid-row: 1/2;
         margin: 1rem;
         border-style: solid;
-        border-color: white;
+        border-color: #ffffff;
         border-width: 0.2rem;
     }
 
@@ -538,7 +538,7 @@ header {
 
     #indhold {
         min-height: 0vh;
-        background-color: white;
+        background-color: #ffffff;
         width: 90vw;
         margin: 4rem auto;
         padding: 1rem;
@@ -588,7 +588,7 @@ header {
     }
 
     nav a {
-        color: white;
+        color: #ffffff;
         padding-top: 2rem;
     }
 
@@ -608,14 +608,14 @@ header {
         font-weight: 400;
         display: block;
         text-align: left;
-        color: white;
+        color: #ffffff;
         background-color: none;
     }
 
     .dropdowndesktop {
         font-family: 'Noto Serif JP', serif;
         font-size: 22px;
-        color: white;
+        color: #ffffff;
         text-align: right;
         border: none;
         outline: none;
@@ -809,7 +809,7 @@ header {
 
     #indhold {
         min-height: 0vh;
-        background-color: white;
+        background-color: #ffffff;
         width: 50vw;
         margin: 4rem auto;
         padding: 2rem;
@@ -912,7 +912,7 @@ header {
     /*******Pop op vindue*****/
 
     #indhold {
-        background-color: white;
+        background-color: #ffffff;
         width: 45vw;
         margin: 4rem auto;
         padding: 2rem;
